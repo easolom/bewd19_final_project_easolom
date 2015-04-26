@@ -1,0 +1,14 @@
+<div>
+	<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+	<p><%= "#{@user.email}" %></p>
+	<p><%= "#{@user.birthday}" %></p>
+	<p><%= "#{@user.location}" %>></p>
+</div>
+
+<h3>A list of Statuses</h3>
+<%= @statuses.each do |s| %>
+	<div class="statuses">
+		<p><%= s.status %></p>
+		<p><%= s.created_at %></p>
+	</div>
+<%= end %>

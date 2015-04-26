@@ -1,2 +1,6 @@
-<h1>Users#friends</h1>
-<p>Find me in app/views/users/friends.html.erb</p>
+<%= @friends.each do |friend| %>
+	<div>
+		<p><%= link_to "#{friend.first_name} #{friend.last_name}", users_show_path(friend.id) %></p>
+		<p><%= "#{@user.location}" %>></p>
+	</div>
+<% end %>

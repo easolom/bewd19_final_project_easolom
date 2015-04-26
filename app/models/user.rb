@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :statuses
 
-  def friend_statuses(user)
+  def friend_statuses()
   	friend_hash = Hash.new
-  	friend_array = user.friendships
+  	friend_array = friendships
   	friend_array.each do |f|
   		friend_hash.store(:f, f.statuses)
   	end

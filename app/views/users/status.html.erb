@@ -1,4 +1,5 @@
-<%= @status.each do |key, status| %>
-	<p><%= key %></p>
-	<p><%= status %></p>
+<%= @status.each do |key, status_array| %>
+	<%= status_array.each do |status| %>
+		<p class="statuses"><%= "#{key}: #{status}" %></p>
+	<% end %>
 <% end %>
