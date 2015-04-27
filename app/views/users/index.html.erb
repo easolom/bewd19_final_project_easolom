@@ -1,2 +1,13 @@
-<%= render "user" %>
+<div class="profile">
+	<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+	<p><%= "#{@user.email}" %></p>
+	<p><%= "#{@user.birthday}" %></p>
+	<p><%= "#{@user.location}" %>></p>
+</div>
+
+<%= @status.each do |key, status_array| %>
+	<%= status_array.each do |status| %>
+		<p class="statuses"><%= "#{key}: #{status}" %></p>
+	<% end %>
+<% end %>
 

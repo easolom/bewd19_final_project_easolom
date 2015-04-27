@@ -1,15 +1,7 @@
 Rails.application.routes.draw do
-  get 'users/index'
+  root 'users#index'
 
-  get 'users/new'
-
-  get 'users/show'
-
-  get 'users/edit'
-
-  get 'users/create'
-
-  get 'users/friends'
+  #get '/users/friends' => 'users#friends'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
