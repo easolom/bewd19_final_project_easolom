@@ -1,12 +1,8 @@
 class Friendship < ActiveRecord::Base
 	belongs_to :user
 
-	def self.is_friend?(id)
-		
-		if (Friendship.where(friend_id: id, user_id: current_user.id))
-			return true
-		else
-			return false
-		end
+	def self.is_friend?(user_id, friend_id)
+		return Friendship.exists?(friend_id: friend_id, user_id: user_id)
 	end
+
 end

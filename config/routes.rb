@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
   root 'users#index'
 
-  get 'users/friends_add' => 'users#friends_add'
+  post 'users/friends_add' => 'users#friends_add'
 
-  get 'users/friends_remove' => 'users#friends_remove'
+  post 'users/friends_remove' => 'users#friends_remove'
 
   get 'users/search' => 'users#search'
 
   post 'users/status' => 'users#status'
 
+  get 'users/friend_requests' => 'users#friend_requests'
+
+  put 'users/accept_friend_request' => 'users#accept_friend_request'
+
+  put 'users/reject_friend_request' => 'users#reject_friend_request'
+
   devise_for :users
+
+  resources :users, only: [:edit, :show, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

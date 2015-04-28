@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   		
       friend_name = "#{f.user.first_name} #{f.user.last_name}"
       friend_statuses = f.statuses.collect do | status|
-        status.status.to_s
+        status.status
       end
       friend_hash.store(friend_name, friend_statueses)
   	end
@@ -23,4 +23,5 @@ class User < ActiveRecord::Base
     friend_hash.store(user_full_name, statuses)
   	return friend_hash
   end
+
 end

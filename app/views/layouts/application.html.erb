@@ -9,7 +9,14 @@
 <body>
 	
 <% if user_signed_in? %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <p><%= link_to "Sign out", destroy_user_session_path, method: :delete %> | 
+    	<%= link_to "Edit User", edit_user_registration_path %></p>
+    <p>
+    	<%= link_to "Home Feed", root_path %> |
+    	<%= link_to "Profile", user_path(current_user.id) %> |
+    	<%= link_to "Search", users_search_path %> |
+    	<%= link_to "Friend Requests", users_friend_requests_path %>
+    </p>
 <% else %>
     <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
 <% end %>
