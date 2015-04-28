@@ -16,7 +16,7 @@
 	<p><%= "#{@user.location}" %>></p>
 </div>
 
-<div class="button"><%= link_to "Edit Profile", edit_user_path(current_user.id) %></div>
+<div class="button"><%= link_to "Edit Profile", edit_user_registration_path(current_user.id) %></div>
 
 <%= form_tag("/users/status", method: "post") do %>
 	<%= label_tag(:status_entered, "Enter a new status here") %>

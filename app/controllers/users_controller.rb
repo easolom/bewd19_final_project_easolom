@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    
     @status = current_user.friend_statuses()
     @user = current_user
     @new_status = Status.new
@@ -53,11 +54,14 @@ class UsersController < ApplicationController
       user_id: current_user.id)
     @new_status.save
     if @new_status.save
+      #@user = current_user
+      #@status = current_user.friend_statuses()
+      #@new_status = Status.new
       render "index"
-    
+    end
   end
 
   def search
-    @list = User.where('first_name LIKE :search OR last_name LIKE :search', search: "%#{params[:q]}%")
+    @list = User.where('first_name LIKE :search OR last_name LIKE :search', search: "%#{params[:search]}%")
   end
 end
