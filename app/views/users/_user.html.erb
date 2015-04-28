@@ -5,6 +5,19 @@
 	<p><%= "#{@user.location}" %>></p>
 </div>
 
+<% if !@user.is_friend?(params[:id]) %>
+	<%= form_tag("/users/friends_add", method: "post") do |f| %>
+		<%= f.hidden_field_tag("friend_id", params[:id]) %>
+		<%= submit_tag("Add As Friend") %>
+	<% end %>
+<% elsif @user.is_friend?(params[:id]) %>
+	<%= form_tag("/users/friends_remove", method: "post") do |f| %>
+		<%= f.hidden_field_tag("friend_id", params[:id]) %>
+		<%= submit_tag("Remove Friend") %>
+	<% end %>
+
+<% end %>
+
 <div class ="statuses">
 	<h3>A list of Statuses</h3>
 	<% @statuses.each do |s| %>

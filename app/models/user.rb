@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   	friend_hash = Hash.new
   	friend_array = friendships
   	friend_array.each do |f|
-  		friend_hash.store(:f, f.statuses)
+  		friend_hash.store(f.friend_id, f.statuses)
   	end
   	return friend_hash
   end

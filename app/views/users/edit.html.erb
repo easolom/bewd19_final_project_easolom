@@ -1,2 +1,30 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= form_for @user do |f| %>
+	<p>
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %>
+	</p>
+	
+	<p>
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %>
+	</p>
+	
+	<p>
+	<%= f.label :birthday %>
+	<%= f.date_field :birthday %>
+	</p>
+	
+	<p>
+	<%= f.label :location %>
+	<%= f.text_field :location %>
+	</p>
+
+	<p>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	</p>
+
+	<p>
+	<%= f.submit %>
+	</p>
+<% end %>

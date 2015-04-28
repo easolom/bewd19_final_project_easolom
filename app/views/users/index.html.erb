@@ -1,3 +1,14 @@
+<% if @new_status.errors.any? %>
+	<h2>There were errors saving your status </h2>
+	<ul>
+		<% @new_status.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+
+
 <div class="profile">
 	<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 	<p><%= "#{@user.email}" %></p>
@@ -5,7 +16,16 @@
 	<p><%= "#{@user.location}" %>></p>
 </div>
 
-<%= @status.each do |key, status_array| %>
+<div class="button"><%= link_to "Edit Profile", edit_user_path(current_user.id) %></div>
+
+<%= form_tag("/users/status", method: "post") do %>
+	<%= label_tag(:status_entered, "Enter a new status here") %>
+	<%= text_field_tag(:status_entered) %>
+	<%= submit_tag("Post Status") %>
+<% end %>
+
+
+<% @status.each do |key, status_array| %>
 	<%= status_array.each do |status| %>
 		<p class="statuses"><%= "#{key}: #{status}" %></p>
 	<% end %>
