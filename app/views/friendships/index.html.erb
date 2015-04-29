@@ -1,0 +1,10 @@
+<% @friendships.each do |request| %>
+	<p><%= "#{request.user.first_name} #{request.user.last_name}" %></p>
+	<p><%= request.user.location %></p>
+	<%= form_tag(friendship_path(request.id), method: "put") do %>
+		<%= submit_tag "Accept Request" %>
+	<% end %>
+	<%= form_tag(friendship_path(request.id), method: "delete") do %>
+		<%= submit_tag "Reject Request" %>
+	<% end %>
+<% end %>

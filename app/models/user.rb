@@ -12,12 +12,9 @@ class User < ActiveRecord::Base
   	friend_hash = Hash.new
   	friend_array = friendships
   	friend_array.each do |f|
-  		
       friend_name = "#{f.user.first_name} #{f.user.last_name}"
-      friend_statuses = f.statuses.collect do | status|
-        status.status
-      end
-      friend_hash.store(friend_name, friend_statueses)
+      friend_statuses = f.user.statuses
+      friend_hash.store(friend_name, friend_statuses)
   	end
     user_full_name = "#{first_name} #{last_name}"
     friend_hash.store(user_full_name, statuses)
@@ -25,3 +22,16 @@ class User < ActiveRecord::Base
   end
 
 end
+
+# <% if current_user.id != user.id %>
+#     <% if @friendship.new_record? %>
+#       <%= form_for @friendship do |f| %>
+#         <%= f.hidden_field :friend_id, value: user.id %>
+#         <%= f.submit("Add Friend") %>
+#       <% end %>
+#     <% else %>
+#       <%= form_tag(friendship_path(@friendship.id), method: "delete") do %>
+#         <%= submit_tag("Remove Friend") %>
+#       <% end %>
+#     <% end %>
+#   <% end %>

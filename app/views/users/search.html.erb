@@ -11,17 +11,5 @@
 		<p><%= "#{user.birthday}" %></p>
 		<p><%= "#{user.location}" %></p>
 	</div>
-	<% if current_user.id != user.id %>
-		<% if !Friendship.is_friend?(current_user.id, user.id) %>
-			<%= form_tag("/users/friends_add", method: "post") do |f| %>
-				<% hidden_field_tag("friend_id", user.id) %>
-				<%= submit_tag("Add As Friend") %>
-			<% end %>
-		<% elsif Friendship.is_friend?(current_user.id, user.id) %>
-			<%= form_tag("/users/friends_remove", method: "post") do |f| %>
-				<% hidden_field_tag("friend_id", user.id) %>
-				<%= submit_tag("Remove Friend") %>
-			<% end %>
-		<% end %>
-	<% end %>
+	
 <% end %>

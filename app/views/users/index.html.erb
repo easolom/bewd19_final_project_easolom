@@ -26,7 +26,7 @@
 
 
 <% @status.each do |key, status_array| %>
-	<%= status_array.each do |status| %>
+	<% status_array.each do |status| %>
 		<p class="statuses"><%= "#{key}: #{status.status}" %></p>
 	<% end %>
 <% end %>
