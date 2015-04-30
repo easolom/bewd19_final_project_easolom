@@ -51,9 +51,9 @@ class UsersController < ApplicationController
     @new_status = Status.new(status: params[:status_entered],
       user_id: current_user.id)
     @new_status.save
-    if @new_status.save
-      redirect_to root_path
-    end
+    
+    redirect_to root_path
+
   end
 
   def search
@@ -61,9 +61,6 @@ class UsersController < ApplicationController
 
   end
 
-  def friend_requests
-    @friend_requests = Friendship.where(user_id: current_user.id, pending: true)
-  end
 
   # def accept_friend_request
   #   #update database to show friend request is accepted
